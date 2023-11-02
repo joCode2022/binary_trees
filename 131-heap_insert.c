@@ -1,14 +1,14 @@
 #include "binary_trees.h"
 
 /**
- * heap_insert - inserts a value in Max Binary Heap
- * @root: a double pointer to the root node of the Heap to insert the value
- * @value: the value to store in the node to be inserted
+ * heap_insert - inserts a val in Max Binary Heap
+ * @root: a double pointer to the root node of the Heap to insert the val
+ * @val: the val to store in the node to be inserted
  *
  * Return: a pointer to the created node
  *         NULL on failure
  */
-heap_t *heap_insert(heap_t **root, int value)
+heap_t *heap_insert(heap_t **root, int val)
 {
 	heap_t *tree, *new, *flip;
 	int size, leaves, sub, bit, level, tmp;
@@ -16,7 +16,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	if (!root)
 		return (NULL);
 	if (!(*root))
-		return (*root = binary_tree_node(NULL, value));
+		return (*root = binary_tree_node(NULL, val));
 	tree = *root;
 	size = binary_tree_size(tree);
 	leaves = size;
@@ -36,7 +36,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	 * The first empty node is 101 == RLR, *root->right->left->right
 	 */
 
-	new = binary_tree_node(tree, value);
+	new = binary_tree_node(tree, val);
 	leaves & 1 ? (tree->right = new) : (tree->left = new);
 
 	flip = new;
@@ -47,7 +47,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		flip->parent->n = tmp;
 		new = new->parent;
 	}
-	/* Flip values with parent until parent value exceeds new value */
+	/* Flip vals with parent until parent val exceeds new val */
 
 	return (new);
 }
