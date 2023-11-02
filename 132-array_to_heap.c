@@ -8,7 +8,7 @@
  * Return: a pointer to the root node of the created Binary Heap
  *         NULL on failure
  */
-heap_t *array_to_heap(int *array, size_t size)
+heap_t *array_to_heap(int *array, sz_t size)
 {
 	unsigned int i;
 	heap_t *root = NULL;
